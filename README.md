@@ -5,4 +5,6 @@ cp $GOPATH/bin/demo ./bin
 
 docker build docker build -t fest/demo .
 docker push fest/demo
+
+kubectl create -f demo-deployment.yaml
 ```
