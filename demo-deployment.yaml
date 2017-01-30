@@ -22,3 +22,18 @@ spec:
         ports:
         - containerPort: 3000
           protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    app: demo
+  name: demo
+  namespace: default
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: demo
