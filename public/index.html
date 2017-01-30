@@ -8,6 +8,10 @@
     <title>Guestbook</title>
   </head>
   <body>
+  <div>
+    <a href="env">/env</a> <a href="health">/health</a> <a href="#"
+                                                           onclick="toggle_visibility('show-submit');">/submit</a>
+  </div>
     <div id="header">
       <h1>Best Coffe Shop</h1>
     </div>
@@ -16,21 +20,18 @@
       <p></p>
     </div>
 
+    <div><p>Completed Orders:</p></div>
     <div id="guestbook-entries">
       <p></p>
     </div>
 
-    <div>
+    <div id="show-submit" style="display:none;">
       <form id="guestbook-form">
         <input autocomplete="off" id="guestbook-entry-content" type="text">
         <a href="#" id="guestbook-submit">Submit</a>
       </form>
     </div>
 
-    <div>
-      <p><h2 id="guestbook-host-address"></h2></p><br/>
-      <a href="env">/env</a> <a href="health">/health</a> <a href="cpu-short">/cpu-short</a> <a href="cpu-long">/cpu-long</a>
-    </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="script.js"></script>
   </body>

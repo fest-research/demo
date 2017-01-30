@@ -7,6 +7,7 @@ $(document).ready(function() {
   var hostAddressElement = $("#guestbook-host-address");
   var errorElement = $("#error");
 
+
   var appendGuestbookEntries = function(data) {
     entriesElement.empty();
     errorElement.empty();
@@ -51,3 +52,11 @@ $(document).ready(function() {
     $.getJSON("list").done(appendGuestbookEntries);
   })();
 });
+
+function toggle_visibility(id) {
+  var e = document.getElementById(id);
+  if(e.style.display == 'block')
+    e.style.display = 'none';
+  else
+    e.style.display = 'block';
+}

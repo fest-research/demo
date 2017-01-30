@@ -19,12 +19,10 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"math"
 	"math/rand"
 	"net/http"
 	"os"
 	"strings"
-	"time"
 
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
@@ -76,24 +74,7 @@ func EnvHandler(rw http.ResponseWriter, req *http.Request) {
 	rw.Write(envJSON)
 }
 
-func CpuShortHandler(rw http.ResponseWriter, req *http.Request) {
-	x := 0.0001
-	t := (rand.Intn(8) + 2) * 100000
-	for i := 0; i <= t; i++ {
-		x += math.Jn(100, x)
-	}
-	rw.Write([]byte("."))
-}
 
-func CpuLongHandler(rw http.ResponseWriter, req *http.Request) {
-	t := time.Millisecond * 250
-	for i := 0; i <= 20; i++ {
-		CpuShortHandler(rw, req)
-		fmt.Printf("Round %v of cpu usage finished\n",i)
-		time.Sleep(t)
-	}
-	rw.Write([]byte("All done"))
-}
 
 func HealthHandler(rw http.ResponseWriter, req *http.Request){
 	rw.Write([]byte("ok"))
@@ -115,11 +96,9 @@ func main() {
 	r.Path("/push/{value}").Methods("GET").HandlerFunc(ListPushHandler)
 	r.Path("/info").Methods("GET").HandlerFunc(InfoHandler)
 	r.Path("/env").Methods("GET").HandlerFunc(EnvHandler)
-	r.Path("/cpu-short").Methods("GET").HandlerFunc(CpuShortHandler)
-	r.Path("/cpu-long").Methods("GET").HandlerFunc(CpuLongHandler)
 	r.Path("/health").Methods("GET").HandlerFunc(HealthHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(r)
-	n.Run(":3010")
+	n.Run(":3000")
 }
