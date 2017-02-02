@@ -11,7 +11,7 @@ services:
 install: true
 
 script:
-  - docker build docker build -t fest/demo .
+  - docker build -t fest/demo .
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
