@@ -18,4 +18,6 @@ after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
     docker push fest/demo;
+    docker run --rm -v `pwd`/assets:/config:rw lachlanevenson/k8s-kubectl --kubeconfig /config/default-kubeconfig.yaml create -f /config/demo-deployment.yaml;
+    docker run --rm -v `pwd`/assets:/config:rw lachlanevenson/k8s-kubectl --kubeconfig /config/default-kubeconfig.yaml replace -f /config/demo-deployment.yaml;
     fi
