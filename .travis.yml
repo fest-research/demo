@@ -11,6 +11,7 @@ services:
 install: true
 
 script:
+  - go build -o bin/demo
   - docker build -t fest/demo .
 
 after_success:
