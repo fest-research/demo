@@ -1,0 +1,20 @@
+sudo: required
+
+language: go
+
+go:
+  - 1.7.x
+
+services:
+  - docker
+
+install: true
+
+script:
+  - docker build docker build -t fest/demo .
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push fest/demo;
+    fi
