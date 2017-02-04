@@ -80,6 +80,13 @@ func HealthHandler(rw http.ResponseWriter, req *http.Request){
 	rw.Write([]byte("ok"))
 }
 
+
+func ClearHandler(rw http.ResponseWriter, req *http.Request){
+	messages = make([]string,10)
+	rw.Write([]byte("Done"))
+}
+
+
 func HandleError(result interface{}, err error) (r interface{}) {
 	if err != nil {
 		panic(err)
@@ -97,6 +104,7 @@ func main() {
 	r.Path("/info").Methods("GET").HandlerFunc(InfoHandler)
 	r.Path("/env").Methods("GET").HandlerFunc(EnvHandler)
 	r.Path("/health").Methods("GET").HandlerFunc(HealthHandler)
+	r.Path("/clear").Methods("GET").HandlerFunc(ClearHandler)
 
 	n := negroni.Classic()
 	n.UseHandler(r)
