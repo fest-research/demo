@@ -15,9 +15,7 @@
 FROM busybox:ubuntu-14.04
 
 ADD ./bin/demo /app/demo
-ADD ./public/index.html /app/public/index.html
-ADD ./public/script.js /app/public/script.js
-ADD ./public/style.css /app/public/style.css
+ADD ./public/ /app/public/
 
 WORKDIR /app
 CMD ["./demo"]
