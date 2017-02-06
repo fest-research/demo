@@ -2,13 +2,14 @@
 ## Demo
 Simple demo application that represents the back-end of a web shop.
   
+Running instance [here](http://104.155.11.172:8080/api/v1/proxy/namespaces/default/services/demo/)
 
 
 
 ### Deploy to Kubernetes
 
 ```shell
-$ https://raw.githubusercontent.com/fest-research/demo/master/assets/demo-deployment.yaml
+$ kubectl create -f https://raw.githubusercontent.com/fest-research/demo/master/assets/demo-deployment.yaml
 ```
 
 ### Build
@@ -45,3 +46,14 @@ docker push my-demo
 ### Travis
 
 Travis CI: [https://travis-ci.org/fest-research/demo]
+
+### REST API
+
+
+```
+# add message to backend
+/push/<value> 
+
+# clear all messages
+/clear
+```
