@@ -2,7 +2,7 @@
 ## Demo
 Simple demo application that represents the back-end of a web shop.
   
-Running instance [here](http://104.155.11.172:8080/api/v1/proxy/namespaces/default/services/demo/)
+Running instance [here](http://35.187.21.121:8080/api/v1/proxy/namespaces/default/services/demo/)
 
 
 
